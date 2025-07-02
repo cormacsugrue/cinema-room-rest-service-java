@@ -3,11 +3,22 @@ package cinema;
 import java.util.Objects;
 
 public class SeatPosition {
-    private final int row;
-    private final int column;
+    private int row;
+    private int column;
+
+    public SeatPosition() {
+    }
 
     public SeatPosition(int row, int column) {
         this.row = row;
+        this.column = column;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public void setColumn(int column) {
         this.column = column;
     }
 

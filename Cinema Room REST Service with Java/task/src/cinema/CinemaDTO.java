@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class CinemaDTO {
     private final int rows;
     private final int columns;
-    private final List<Seat> seats;
+    private final List<SeatDTO> seats;
 
     public CinemaDTO(Cinema cinema) {
         this.rows = cinema.getRows();
@@ -17,6 +17,7 @@ public class CinemaDTO {
                 .sorted(Comparator
                         .comparing((Seat seat) -> seat.getPosition().getRow())
                         .thenComparing((Seat seat) -> seat.getPosition().getColumn()))
+                .map(seat -> new SeatDTO(seat))
                 .collect(Collectors.toList());
     }
 
@@ -28,7 +29,7 @@ public class CinemaDTO {
         return columns;
     }
 
-    public List<Seat> getSeats() {
+    public List<SeatDTO> getSeats() {
         return seats;
     }
 }
