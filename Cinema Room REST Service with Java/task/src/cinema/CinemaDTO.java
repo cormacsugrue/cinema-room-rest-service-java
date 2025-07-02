@@ -1,5 +1,6 @@
 package cinema;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +12,11 @@ public class CinemaDTO {
     public CinemaDTO(Cinema cinema) {
         this.rows = cinema.getRows();
         this.columns = cinema.getColumns();
-        this.seats = cinema.getSeats().stream()
+        this.seats = cinema.getSeats().values().stream()
                 .filter(seat -> seat.isAvailable())
+                .sorted(Comparator
+                        .comparingInt(Seat::getRow)
+                        .thenComparing(Seat::getColumn))
                 .collect(Collectors.toList());
     }
 

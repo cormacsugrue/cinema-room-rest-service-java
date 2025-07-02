@@ -2,11 +2,13 @@ package cinema;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class Cinema {
     private final int rows;
     private final int columns;
-    private final List<Seat> seats;
+    private final ConcurrentMap<String, Seat> seats;
 
     private final int FRONT_ROW_SEAT_PRICE = 10;
     private final int BACK_ROW_SEAT_PRICE = 8;
@@ -19,7 +21,7 @@ public class Cinema {
         return columns;
     }
 
-    public List<Seat> getSeats() {
+    public ConcurrentMap<String, Seat> getSeats() {
         return seats;
     }
 
@@ -31,19 +33,19 @@ public class Cinema {
         setSeatRowPrice(rowPricingDivide, rows, BACK_ROW_SEAT_PRICE);
     }
 
-    private List<Seat> instantiateSeats() {
-        List<Seat> seats = new ArrayList<>();
+    private ConcurrentMap<String, Seat> instantiateSeats() {
+        ConcurrentMap<String, Seat> seats = new ConcurrentHashMap<>();
         for (int i = 1; i <= rows; i++) {
             for (int j = 1; j <= columns; j++) {
                 Seat nextSeat = new Seat(i, j);
-                seats.add(nextSeat);
+                seats.put(nextSeat.getId(), nextSeat);
             }
         }
         return seats;
     }
 
     private void setSeatRowPrice(int fromRow, int toRow, int price) {
-        seats.stream().filter(x -> x.getRow() > fromRow && x.getRow() <= toRow)
+        seats.values().stream().filter(x -> x.getRow() > fromRow && x.getRow() <= toRow)
                 .forEach(x -> x.setPrice(price));
     }
 }
