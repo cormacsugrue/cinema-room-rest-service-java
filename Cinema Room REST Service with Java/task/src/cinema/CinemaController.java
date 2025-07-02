@@ -1,6 +1,8 @@
 package cinema;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,5 +17,7 @@ public class CinemaController {
     public CinemaDTO getSeats() {
         return new CinemaDTO(cinema);
     }
+
+
 
 }
