@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CinemaController {
-    Cinema cinema = new Cinema(9, 9);
+    Cinema cinema = new Cinema(9, 9, 4);
 
 
     @GetMapping("/seats")

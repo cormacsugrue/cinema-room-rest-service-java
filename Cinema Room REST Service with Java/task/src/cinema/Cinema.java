@@ -8,6 +8,9 @@ public class Cinema {
     private final int columns;
     private final List<Seat> seats;
 
+    private final int FRONT_ROW_SEAT_PRICE = 10;
+    private final int BACK_ROW_SEAT_PRICE = 8;
+
     public int getRows() {
         return rows;
     }
@@ -20,10 +23,12 @@ public class Cinema {
         return seats;
     }
 
-    public Cinema(int rows, int columns) {
+    public Cinema(int rows, int columns, int rowPricingDivide) {
         this.rows = rows;
         this.columns = columns;
         seats = instantiateSeats();
+        setSeatRowPrice(0, rowPricingDivide, FRONT_ROW_SEAT_PRICE);
+        setSeatRowPrice(rowPricingDivide, rows, BACK_ROW_SEAT_PRICE);
     }
 
     private List<Seat> instantiateSeats() {
@@ -35,5 +40,10 @@ public class Cinema {
             }
         }
         return seats;
+    }
+
+    private void setSeatRowPrice(int fromRow, int toRow, int price) {
+        seats.stream().filter(x -> x.getRow() > fromRow && x.getRow() <= toRow)
+                .forEach(x -> x.setPrice(price));
     }
 }
