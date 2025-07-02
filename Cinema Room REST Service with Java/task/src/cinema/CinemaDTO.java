@@ -15,8 +15,8 @@ public class CinemaDTO {
         this.seats = cinema.getSeats().values().stream()
                 .filter(seat -> seat.isAvailable())
                 .sorted(Comparator
-                        .comparingInt(Seat::getRow)
-                        .thenComparing(Seat::getColumn))
+                        .comparing((Seat seat) -> seat.getPosition().getRow())
+                        .thenComparing((Seat seat) -> seat.getPosition().getColumn()))
                 .collect(Collectors.toList());
     }
 
