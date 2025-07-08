@@ -11,6 +11,14 @@ public class Cinema {
     private final int FRONT_ROW_SEAT_PRICE = 10;
     private final int BACK_ROW_SEAT_PRICE = 8;
 
+    public Cinema(int rows, int columns, int rowPricingDivide) {
+        this.rows = rows;
+        this.columns = columns;
+        seats = instantiateSeats();
+        setSeatRowPrice(0, rowPricingDivide, FRONT_ROW_SEAT_PRICE);
+        setSeatRowPrice(rowPricingDivide, rows, BACK_ROW_SEAT_PRICE);
+    }
+
     public int getRows() {
         return rows;
     }
@@ -23,13 +31,6 @@ public class Cinema {
         return seats;
     }
 
-    public Cinema(int rows, int columns, int rowPricingDivide) {
-        this.rows = rows;
-        this.columns = columns;
-        seats = instantiateSeats();
-        setSeatRowPrice(0, rowPricingDivide, FRONT_ROW_SEAT_PRICE);
-        setSeatRowPrice(rowPricingDivide, rows, BACK_ROW_SEAT_PRICE);
-    }
 
     private ConcurrentMap<SeatPosition, Seat> instantiateSeats() {
         ConcurrentMap<SeatPosition, Seat> seats = new ConcurrentHashMap<>();

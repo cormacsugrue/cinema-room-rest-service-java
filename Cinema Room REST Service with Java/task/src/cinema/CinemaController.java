@@ -1,5 +1,6 @@
 package cinema;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,15 +19,15 @@ public class CinemaController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<?> purchaseTicket(@RequestBody SeatPosition seatPosition) {
+    public ResponseEntity<?> purchaseTicket(@RequestBody @Valid SeatPosition seatPosition) {
 
-        // validate the request param
-        if (seatPosition.getRow() < 1 || seatPosition.getRow() > CINEMA_ROW_AMOUNT || seatPosition.getColumn() < 1 || seatPosition.getColumn() > CINEMA_COLUMN_AMOUNT) {
-            // return 400 status code
-            return ResponseEntity
-                    .badRequest()
-                    .body(Map.of("error", "The number of a row or a column is out of bounds!"));
-        }
+//        // validate the request param
+//        if (seatPosition.getRow() < 1 || seatPosition.getRow() > CINEMA_ROW_AMOUNT || seatPosition.getColumn() < 1 || seatPosition.getColumn() > CINEMA_COLUMN_AMOUNT) {
+//            // return 400 status code
+//            return ResponseEntity
+//                    .badRequest()
+//                    .body(Map.of("error", "The number of a row or a column is out of bounds!"));
+//        }
 
         // Retrieve seat at seatPosition anf format to seatDTO
         Seat seat = cinema.getSeats().get(seatPosition);
@@ -38,12 +39,9 @@ public class CinemaController {
             return ResponseEntity
                     .ok(seatDTO);
 
-        } else {
-            // Bad Request (400)
-            return ResponseEntity
-                    .badRequest()
-                    .body(Map.of("error", "The ticket has been already purchased!"));
         }
+
+        throw new TicketNotAvailableException("The ticket has been already purchased!");
     }
 
 }

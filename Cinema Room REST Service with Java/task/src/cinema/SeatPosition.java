@@ -1,9 +1,17 @@
 package cinema;
 
 import java.util.Objects;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 
 public class SeatPosition {
+
+    @Min(1)
+    @Max(9)
     private int row;
+
+    @Min(1)
+    @Max(9)
     private int column;
 
     public SeatPosition() {

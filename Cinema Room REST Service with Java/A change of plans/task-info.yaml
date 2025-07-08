@@ -12,6 +12,30 @@ files:
   - name: test/CinemaTests.java
     visible: false
     learner_created: false
+  - name: src/cinema/Seat.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/Cinema.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/CinemaDTO.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/CinemaController.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/SeatPosition.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/SeatDTO.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/TicketNotAvailableException.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/ControllerExceptionHandler.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13377#comment
 status: Unchecked
-record: -1
+record: 3
