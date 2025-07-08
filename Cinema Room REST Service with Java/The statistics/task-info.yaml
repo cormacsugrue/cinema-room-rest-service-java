@@ -12,6 +12,49 @@ files:
   - name: test/CinemaTests.java
     visible: false
     learner_created: false
+  - name: src/cinema/UUIDNotFoundException.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/Ticket.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/CinemaDTO.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/TicketDTO.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/CinemaController.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/SeatPosition.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/SeatDTO.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/Seat.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/Cinema.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/TicketNotAvailableException.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/ControllerExceptionHandler.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/CinemaStatsDTO.java
+    visible: true
+    learner_created: true
+  - name: src/cinema/InvalidPasswordException.java
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13378#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Tue, 08 Jul 2025 15:27:38 UTC"
 record: -1
